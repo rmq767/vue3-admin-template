@@ -41,7 +41,7 @@
 				<div class="layout-breadcrumb-seting-bar-flex mt10">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.twoIsTopBarColorGradual') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-switch v-model="getThemeConfig.isTopBarColorGradual" size="small" @change="onTopBarGradualChange"></el-switch>
+						<el-switch v-model="getThemeConfig.isTopBarColorGradual" size="small" @change="onTopBarGradualChange"> </el-switch>
 					</div>
 				</div>
 
@@ -62,7 +62,7 @@
 				<div class="layout-breadcrumb-seting-bar-flex mt14">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.twoIsMenuBarColorGradual') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-switch v-model="getThemeConfig.isMenuBarColorGradual" size="small" @change="onMenuBarGradualChange"></el-switch>
+						<el-switch v-model="getThemeConfig.isMenuBarColorGradual" size="small" @change="onMenuBarGradualChange"> </el-switch>
 					</div>
 				</div>
 
@@ -230,7 +230,7 @@
 				<div class="layout-breadcrumb-seting-bar-flex mt15">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fourIsShareTagsView') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-switch v-model="getThemeConfig.isShareTagsView" size="small" @change="onShareTagsViewChange"></el-switch>
+						<el-switch v-model="getThemeConfig.isShareTagsView" size="small" @change="onShareTagsViewChange"> </el-switch>
 					</div>
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt15">
@@ -242,7 +242,7 @@
 				<div class="layout-breadcrumb-seting-bar-flex mt15">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fourIsGrayscale') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-switch v-model="getThemeConfig.isGrayscale" size="small" @change="onAddFilterChange('grayscale')"></el-switch>
+						<el-switch v-model="getThemeConfig.isGrayscale" size="small" @change="onAddFilterChange('grayscale')"> </el-switch>
 					</div>
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt15">
@@ -418,10 +418,12 @@ import { Local } from '/@/utils/storage';
 import Watermark from '/@/utils/wartermark';
 import commonFunction from '/@/utils/commonFunction';
 import other from '/@/utils/other';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
 	name: 'layoutBreadcrumbSeting',
 	setup() {
+		const { locale } = useI18n();
 		const { proxy } = <any>getCurrentInstance();
 		const storesThemeConfig = useThemeConfig();
 		const { themeConfig } = storeToRefs(storesThemeConfig);
@@ -636,7 +638,7 @@ export default defineComponent({
 					// 开启水印
 					onWartermarkChange();
 					// 语言国际化
-					if (Local.get('themeConfig')) proxy.$i18n.locale = Local.get('themeConfig').globalI18n;
+					if (Local.get('themeConfig')) locale.value = Local.get('themeConfig').globalI18n;
 					// 初始化菜单样式等
 					initSetStyle();
 				}, 100);
@@ -679,24 +681,29 @@ export default defineComponent({
 .layout-breadcrumb-seting-bar {
 	height: calc(100vh - 50px);
 	padding: 0 15px;
+
 	::v-deep(.el-scrollbar__view) {
 		overflow-x: hidden !important;
 	}
+
 	.layout-breadcrumb-seting-bar-flex {
 		display: flex;
 		align-items: center;
 		margin-bottom: 5px;
+
 		&-label {
 			flex: 1;
 			color: var(--el-text-color-primary);
 		}
 	}
+
 	.layout-drawer-content-flex {
 		overflow: hidden;
 		display: flex;
 		flex-wrap: wrap;
 		align-content: flex-start;
 		margin: 0 -5px;
+
 		.layout-drawer-content-item {
 			width: 50%;
 			height: 70px;
@@ -704,31 +711,39 @@ export default defineComponent({
 			border: 1px solid transparent;
 			position: relative;
 			padding: 5px;
+
 			.el-container {
 				height: 100%;
+
 				.el-aside-dark {
 					background-color: var(--next-color-seting-header);
 				}
+
 				.el-aside {
 					background-color: var(--next-color-seting-aside);
 				}
+
 				.el-header {
 					background-color: var(--next-color-seting-header);
 				}
+
 				.el-main {
 					background-color: var(--next-color-seting-main);
 				}
 			}
+
 			.el-circular {
 				border-radius: 2px;
 				overflow: hidden;
 				border: 1px solid transparent;
 				transition: all 0.3s ease-in-out;
 			}
+
 			.drawer-layout-active {
 				border: 1px solid;
 				border-color: var(--el-color-primary);
 			}
+
 			.layout-tips-warp,
 			.layout-tips-warp-active {
 				transition: all 0.3s ease-in-out;
@@ -740,6 +755,7 @@ export default defineComponent({
 				border-color: var(--el-color-primary-light-5);
 				border-radius: 100%;
 				padding: 4px;
+
 				.layout-tips-box {
 					transition: inherit;
 					width: 30px;
@@ -748,6 +764,7 @@ export default defineComponent({
 					border: 1px solid;
 					border-color: var(--el-color-primary-light-5);
 					border-radius: 100%;
+
 					.layout-tips-txt {
 						transition: inherit;
 						position: relative;
@@ -767,30 +784,37 @@ export default defineComponent({
 					}
 				}
 			}
+
 			.layout-tips-warp-active {
 				border: 1px solid;
 				border-color: var(--el-color-primary);
+
 				.layout-tips-box {
 					border: 1px solid;
 					border-color: var(--el-color-primary);
+
 					.layout-tips-txt {
 						color: var(--el-color-primary) !important;
 						background-color: var(--next-color-seting-main) !important;
 					}
 				}
 			}
+
 			&:hover {
 				.el-circular {
 					transition: all 0.3s ease-in-out;
 					border: 1px solid;
 					border-color: var(--el-color-primary);
 				}
+
 				.layout-tips-warp {
 					transition: all 0.3s ease-in-out;
 					border-color: var(--el-color-primary);
+
 					.layout-tips-box {
 						transition: inherit;
 						border-color: var(--el-color-primary);
+
 						.layout-tips-txt {
 							transition: inherit;
 							color: var(--el-color-primary) !important;
@@ -801,12 +825,15 @@ export default defineComponent({
 			}
 		}
 	}
+
 	.copy-config {
 		margin: 10px 0;
+
 		.copy-config-btn {
 			width: 100%;
 			margin-top: 15px;
 		}
+
 		.copy-config-btn-reset {
 			width: 100%;
 			margin: 10px 0 0;

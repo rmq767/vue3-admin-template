@@ -58,6 +58,7 @@ module.exports = {
 		'no-unused-vars': 'error',
 		'no-v-model-argument': 'off',
 		'no-case-declarations': 'off',
-		'no-console': 'error',
+		'no-console': 'off',
+		'no-debugger': 'off',
 	},
 };

@@ -14,7 +14,7 @@
 					transition: 'padding 0.3s ease-in-out',
 				}"
 			/>
-			<Footer v-if="themeConfig.isFooter" />
+			<LayoutFooter v-if="themeConfig.isFooter" />
 		</el-scrollbar>
 	</el-main>
 </template>
@@ -26,7 +26,7 @@ import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { NextLoading } from '/@/utils/loading';
 import LayoutParentView from '/@/layout/routerView/parent.vue';
-import Footer from '/@/layout/footer/index.vue';
+import LayoutFooter from '/@/layout/footer/index.vue';
 
 // 定义接口来定义对象的类型
 interface MainState {
@@ -36,7 +36,7 @@ interface MainState {
 
 export default defineComponent({
 	name: 'layoutMain',
-	components: { LayoutParentView, Footer },
+	components: { LayoutParentView, LayoutFooter },
 	setup() {
 		const { proxy } = <any>getCurrentInstance();
 		const storesThemeConfig = useThemeConfig();

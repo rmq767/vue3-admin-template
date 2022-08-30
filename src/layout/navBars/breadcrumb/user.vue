@@ -94,7 +94,7 @@ export default defineComponent({
 	name: 'layoutBreadcrumbUser',
 	components: { UserNews, Search },
 	setup() {
-		const { t } = useI18n();
+		const { t, locale, messages } = useI18n();
 		const { proxy } = <any>getCurrentInstance();
 		const router = useRouter();
 		const stores = useUserInfo();
@@ -188,13 +188,13 @@ export default defineComponent({
 			Local.remove('themeConfig');
 			themeConfig.value.globalI18n = lang;
 			Local.set('themeConfig', themeConfig.value);
-			proxy.$i18n.locale = lang;
+			locale.value = lang;
 			initI18n();
 			other.useTitle();
 		};
 		// 设置 element plus 组件的国际化
 		const setI18nConfig = (locale: string) => {
-			proxy.mittBus.emit('getI18nConfig', proxy.$i18n.messages[locale]);
+			proxy.mittBus.emit('getI18nConfig', messages.value[locale]);
 		};
 		// 初始化言语国际化
 		const initI18n = () => {

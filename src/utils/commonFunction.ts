@@ -1,7 +1,12 @@
 // 通用函数
+import useClipboard from 'vue-clipboard3';
+import { ElMessage } from 'element-plus';
 import { formatDate } from '/@/utils/formatTime';
+import { useI18n } from 'vue-i18n';
 
 export default function () {
+	const { t } = useI18n();
+	const { toClipboard } = useClipboard();
 	//百分比格式化
 	const percentFormat = (row: any, column: number, cellValue: any) => {
 		return cellValue ? `${cellValue}%` : '-';
@@ -32,6 +37,22 @@ export default function () {
 	const scale2Format = (value: any = 0) => {
 		return Number.parseFloat(value).toFixed(2);
 	};
+	// 点击复制文本
+	const copyText = (text: string) => {
+		return new Promise((resolve, reject) => {
+			try {
+				//复制
+				toClipboard(text);
+				//下面可以设置复制成功的提示框等操作
+				ElMessage.success(t('message.layout.copyTextSuccess'));
+				resolve(text);
+			} catch (e) {
+				//复制失败
+				ElMessage.error(t('message.layout.copyTextError'));
+				reject(e);
+			}
+		});
+	};
 	return {
 		percentFormat,
 		dateFormatYMD,
@@ -39,5 +60,6 @@ export default function () {
 		dateFormatHMS,
 		scaleFormat,
 		scale2Format,
+		copyText,
 	};
 }
