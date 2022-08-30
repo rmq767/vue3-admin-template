@@ -16,7 +16,7 @@
 						}
 					"
 				>
-					<i class="iconfont icon-webicon318 layout-navbars-tagsview-ul-li-iconfont" v-if="isActive(v)"></i>
+					<SvgIcon name="ele-StarFilled" class="layout-navbars-tagsview-ul-li-iconfont" :size="12" v-if="isActive(v)"></SvgIcon>
 					<SvgIcon :name="v.meta.icon" v-if="!isActive(v) && getThemeConfig.isTagsviewIcon" class="pr5" />
 					<span>{{ setTagsViewNameI18n(v) }}</span>
 					<template v-if="isActive(v)">

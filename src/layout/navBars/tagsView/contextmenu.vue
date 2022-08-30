@@ -57,7 +57,7 @@ export default defineComponent({
 					contextMenuClickId: 4,
 					txt: 'message.tagsView.fullscreen',
 					affix: false,
-					icon: 'iconfont icon-fullscreen',
+					icon: 'ele-Fullscreen',
 				},
 			],
 			item: {},

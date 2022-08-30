@@ -1,8 +1,8 @@
 <template>
 	<div class="layout-navbars-breadcrumb-user pr15" :style="{ flex: layoutUserFlexNum }">
 		<el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" @command="onComponentSizeChange">
-			<div class="layout-navbars-breadcrumb-user-icon">
-				<i class="iconfont icon-ziti" :title="$t('message.user.title0')"></i>
+			<div class="layout-navbars-breadcrumb-user-icon" :title="$t('message.user.title0')">
+				<SvgIcon name="ele-Operation"></SvgIcon>
 			</div>
 			<template #dropdown>
 				<el-dropdown-menu>
@@ -13,8 +13,8 @@
 			</template>
 		</el-dropdown>
 		<el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" @command="onLanguageChange">
-			<div class="layout-navbars-breadcrumb-user-icon">
-				<i class="iconfont" :class="disabledI18n === 'en' ? 'icon-fuhao-yingwen' : 'icon-fuhao-zhongwen'" :title="$t('message.user.title1')"></i>
+			<div class="layout-navbars-breadcrumb-user-icon" :title="$t('message.user.title1')">
+				<SvgIcon name="ele-Guide"></SvgIcon>
 			</div>
 			<template #dropdown>
 				<el-dropdown-menu>
@@ -24,21 +24,17 @@
 				</el-dropdown-menu>
 			</template>
 		</el-dropdown>
-		<div class="layout-navbars-breadcrumb-user-icon" @click="onSearchClick">
-			<el-icon :title="$t('message.user.title2')">
-				<ele-Search />
-			</el-icon>
+		<div class="layout-navbars-breadcrumb-user-icon" :title="$t('message.user.title2')" @click="onSearchClick">
+			<SvgIcon name="ele-Search"></SvgIcon>
 		</div>
-		<div class="layout-navbars-breadcrumb-user-icon" @click="onLayoutSetingClick">
-			<i class="icon-skin iconfont" :title="$t('message.user.title3')"></i>
+		<div class="layout-navbars-breadcrumb-user-icon" :title="$t('message.user.title3')" @click="onLayoutSetingClick">
+			<SvgIcon name="ele-SetUp"></SvgIcon>
 		</div>
 		<div class="layout-navbars-breadcrumb-user-icon">
 			<el-popover placement="bottom" trigger="click" transition="el-zoom-in-top" :width="300" :persistent="false">
 				<template #reference>
-					<el-badge :is-dot="true">
-						<el-icon :title="$t('message.user.title4')">
-							<ele-Bell />
-						</el-icon>
+					<el-badge :is-dot="true" :title="$t('message.user.title4')">
+						<SvgIcon name="ele-Bell"></SvgIcon>
 					</el-badge>
 				</template>
 				<template #default>
@@ -46,20 +42,18 @@
 				</template>
 			</el-popover>
 		</div>
-		<div class="layout-navbars-breadcrumb-user-icon mr10" @click="onScreenfullClick">
-			<i
-				class="iconfont"
-				:title="isScreenfull ? $t('message.user.title6') : $t('message.user.title5')"
-				:class="!isScreenfull ? 'icon-fullscreen' : 'icon-tuichuquanping'"
-			></i>
+		<div
+			class="layout-navbars-breadcrumb-user-icon mr10"
+			:title="isScreenfull ? $t('message.user.title6') : $t('message.user.title5')"
+			@click="onScreenfullClick"
+		>
+			<SvgIcon name="ele-FullScreen"></SvgIcon>
 		</div>
 		<el-dropdown :show-timeout="70" :hide-timeout="50" @command="onHandleCommandClick">
 			<span class="layout-navbars-breadcrumb-user-link">
 				<img :src="userInfos.photo" class="layout-navbars-breadcrumb-user-link-photo mr5" />
 				{{ userInfos.userName === '' ? 'common' : userInfos.userName }}
-				<el-icon class="el-icon--right">
-					<ele-ArrowDown />
-				</el-icon>
+				<SvgIcon name="ele-ArrowDown"></SvgIcon>
 			</span>
 			<template #dropdown>
 				<el-dropdown-menu>

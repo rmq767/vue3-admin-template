@@ -43,7 +43,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 					isAffix: true,
 					isIframe: false,
 					roles: ['admin', 'common'],
-					icon: 'iconfont icon-shouye',
+					icon: 'ele-House',
 				},
 			},
 			// {

@@ -22,7 +22,7 @@
 				</div>
 				<Scan v-if="isScan" />
 				<div class="login-content-main-sacn" @click="isScan = !isScan">
-					<i class="iconfont" :class="isScan ? 'icon-diannao1' : 'icon-barcode-qr'"></i>
+					<SvgIcon :name="isScan ? 'ele-Monitor' : 'ele-Iphone'" :size="48" />
 					<div class="login-content-main-sacn-delta"></div>
 				</div>
 			</div>

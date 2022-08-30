@@ -18,12 +18,11 @@
 					<el-icon class="el-input__icon"><ele-Unlock /></el-icon>
 				</template>
 				<template #suffix>
-					<i
-						class="iconfont el-input__icon login-content-password"
-						:class="isShowPassword ? 'icon-yincangmima' : 'icon-xianshimima'"
+					<SvgIcon
+						class="login-content-password"
 						@click="isShowPassword = !isShowPassword"
-					>
-					</i>
+						:name="isShowPassword ? 'ele-Hide' : 'ele-View'"
+					></SvgIcon>
 				</template>
 			</el-input>
 		</el-form-item>
