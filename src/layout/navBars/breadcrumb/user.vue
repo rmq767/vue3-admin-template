@@ -47,7 +47,7 @@
 			:title="isScreenfull ? $t('message.user.title6') : $t('message.user.title5')"
 			@click="onScreenfullClick"
 		>
-			<SvgIcon name="ele-FullScreen"></SvgIcon>
+			<SvgIcon :name="isScreenfull ? 'exit-fullscreen' : 'fullscreen'"></SvgIcon>
 		</div>
 		<el-dropdown :show-timeout="70" :hide-timeout="50" @command="onHandleCommandClick">
 			<span class="layout-navbars-breadcrumb-user-link">

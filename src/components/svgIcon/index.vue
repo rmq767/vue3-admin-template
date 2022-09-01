@@ -5,7 +5,11 @@
 	<div v-else-if="isShowIconImg" :style="setIconImgOutStyle">
 		<img :src="getIconName" :style="setIconSvgInsStyle" />
 	</div>
-	<i v-else :class="getIconName" :style="setIconSvgStyle" />
+	<i v-else :class="['svg-icon', $attrs.class]" :style="setIconSvgStyle">
+		<svg>
+			<use :xlink:href="'#icon-' + getIconName" />
+		</svg>
+	</i>
 </template>
 
 <script lang="ts">
@@ -71,3 +75,23 @@ export default defineComponent({
 	},
 });
 </script>
+
+<style lang="scss" scoped>
+.svg-icon {
+	--color: inherit;
+	height: 1em;
+	width: 1em;
+	line-height: 1em;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	fill: currentColor;
+	color: var(--color);
+	font-size: inherit;
+	svg {
+		width: 1rem;
+		height: 1rem;
+	}
+}
+</style>
