@@ -2,11 +2,11 @@
  * 时间日期转换
  * @param date 当前时间，new Date() 格式
  * @param format 需要转换的时间格式字符串
- * @description format 字符串随意，如 `YYYY-mm、YYYY-mm-dd`
- * @description format 季度："YYYY-mm-dd HH:MM:SS QQQQ"
- * @description format 星期："YYYY-mm-dd HH:MM:SS WWW"
- * @description format 几周："YYYY-mm-dd HH:MM:SS ZZZ"
- * @description format 季度 + 星期 + 几周："YYYY-mm-dd HH:MM:SS WWW QQQQ ZZZ"
+ * @description format 字符串随意，如 `yyyy-MM、yyyy-MM-dd`
+ * @description format 季度："yyyy-MM-dd HH:mm:ss QQQQ"
+ * @description format 星期："yyyy-MM-dd HH:mm:ss WWW"
+ * @description format 几周："yyyy-MM-dd HH:mm:ss ZZZ"
+ * @description format 季度 + 星期 + 几周："yyyy-MM-dd HH:mm:ss WWW QQQQ ZZZ"
  * @returns 返回拼接后的时间字符串
  */
 export function formatDate(date: Date, format: string): string {
@@ -14,12 +14,12 @@ export function formatDate(date: Date, format: string): string {
 	let z = getWeek(date); // 周
 	let qut = Math.floor((date.getMonth() + 3) / 3).toString(); // 季度
 	const opt: { [key: string]: string } = {
-		'Y+': date.getFullYear().toString(), // 年
-		'm+': (date.getMonth() + 1).toString(), // 月(月份从0开始，要+1)
+		'y+': date.getFullYear().toString(), // 年
+		'M+': (date.getMonth() + 1).toString(), // 月(月份从0开始，要+1)
 		'd+': date.getDate().toString(), // 日
 		'H+': date.getHours().toString(), // 时
-		'M+': date.getMinutes().toString(), // 分
-		'S+': date.getSeconds().toString(), // 秒
+		'm+': date.getMinutes().toString(), // 分
+		's+': date.getSeconds().toString(), // 秒
 		'q+': qut, // 季度
 	};
 	// 中文数字 (星期)
@@ -83,7 +83,7 @@ export function getWeek(dateTime: Date): number {
  * @description param 3天：   60 * 60* 24 * 1000 * 3
  * @returns 返回拼接后的时间字符串
  */
-export function formatPast(param: string | Date, format: string = 'YYYY-mm-dd'): string {
+export function formatPast(param: string | Date, format: string = 'yyyy-MM-dd'): string {
 	// 传入格式处理、存储转换值
 	let t: any, s: number;
 	// 获取js 时间戳

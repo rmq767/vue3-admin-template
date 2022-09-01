@@ -14,12 +14,12 @@ export default function () {
 	//列表日期时间格式化
 	const dateFormatYMD = (row: any, column: number, cellValue: any) => {
 		if (!cellValue) return '-';
-		return formatDate(new Date(cellValue), 'YYYY-mm-dd');
+		return formatDate(new Date(cellValue), 'yyyy-MM-dd');
 	};
 	//列表日期时间格式化
 	const dateFormatYMDHMS = (row: any, column: number, cellValue: any) => {
 		if (!cellValue) return '-';
-		return formatDate(new Date(cellValue), 'YYYY-mm-dd HH:MM:SS');
+		return formatDate(new Date(cellValue), 'yyyy-MM-dd HH:mm:ss');
 	};
 	//列表日期时间格式化
 	const dateFormatHMS = (row: any, column: number, cellValue: any) => {
@@ -27,7 +27,7 @@ export default function () {
 		let time = 0;
 		if (typeof row === 'number') time = row;
 		if (typeof cellValue === 'number') time = cellValue;
-		return formatDate(new Date(time * 1000), 'HH:MM:SS');
+		return formatDate(new Date(time * 1000), 'HH:mm:ss');
 	};
 	// 小数格式化
 	const scaleFormat = (value: any = 0, scale: number = 4) => {
