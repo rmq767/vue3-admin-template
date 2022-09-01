@@ -46,6 +46,21 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 					icon: 'ele-House',
 				},
 			},
+			{
+				path: '/test',
+				name: 'test',
+				component: () => import('/@/views/test/index.vue'),
+				meta: {
+					title: 'message.router.test',
+					isLink: '',
+					isHide: false,
+					isKeepAlive: true,
+					isAffix: false,
+					isIframe: false,
+					roles: ['admin', 'common'],
+					icon: 'ele-House',
+				},
+			},
 			// {
 			// 	path: '/link',
 			// 	name: 'layoutLinkView',

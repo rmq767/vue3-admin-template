@@ -7,7 +7,7 @@ import { useKeepALiveNames } from '/@/stores/keepAliveNames';
 import { useRoutesList } from '/@/stores/routesList';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { Session } from '/@/utils/storage';
-import { staticRoutes } from '/@/router/route';
+import { staticRoutes, dynamicRoutes } from '/@/router/route';
 import { initFrontEndControlRoutes } from '/@/router/frontEnd';
 import { initBackEndControlRoutes } from '/@/router/backEnd';
 
@@ -25,6 +25,7 @@ const storesThemeConfig = useThemeConfig(pinia);
 const { themeConfig } = storeToRefs(storesThemeConfig);
 const { isRequestRoutes } = themeConfig.value;
 if (isRequestRoutes) staticRoutes.splice(0, 1);
+let routes = [...dynamicRoutes, ...staticRoutes];
 
 /**
  * 创建一个可以被 Vue 应用程序使用的路由实例
@@ -33,7 +34,7 @@ if (isRequestRoutes) staticRoutes.splice(0, 1);
  */
 export const router = createRouter({
 	history: createWebHashHistory(),
-	routes: staticRoutes,
+	routes: routes,
 });
 
 /**
